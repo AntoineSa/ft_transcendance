@@ -1,0 +1,21 @@
+services:
+
+	backend:
+		build: backend/
+		image: backend
+		restart: always
+		ports:
+			- "80:80"
+
+	db:
+		image: postgres
+		restart: always
+		environment:
+			POSTGRES_PASSWORD: passwd
+
+	db:
+		build: database/
+		image: postgres
+		restart: always
+		environment:
+			POSTGRES_PASSWORD: passwd
