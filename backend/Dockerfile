@@ -19,6 +19,6 @@ COPY	./user.interface.ts src/items/
 COPY	./create-item.dto.ts src/items/
 COPY	./validation.pipe.ts src/common/
 COPY	./admin.guard.ts src/common/
-
+COPY	./backend.env .env
 
 CMD		["npm", "run", "start"]
