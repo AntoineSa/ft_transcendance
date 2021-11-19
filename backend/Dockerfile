@@ -12,6 +12,10 @@ COPY	./app.module.ts src/
 COPY	./items.controller.ts src/items/
 COPY	./items.service.ts src/items/
 COPY	./items.interface.ts src/items/
+COPY	./spectate.controller.ts src/items/
+COPY	./spectate.service.ts src/items/
+COPY	./spectate.interface.ts src/items/
+COPY	./user.interface.ts src/items/
 COPY	./create-item.dto.ts src/items/
 COPY	./validation.pipe.ts src/common/
 COPY	./admin.guard.ts src/common/
