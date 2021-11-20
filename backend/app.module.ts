@@ -11,7 +11,8 @@ import { ItemsService } from './items/items.service';
 //import { ChatService } from './items/chat.service';
 import { SpectateController } from './items/spectate.controller';
 import { SpectateService } from './items/spectate.service';
-         
+import { DatabaseModule } from './items/database.module';
+
 @Module({     
   imports: [
     ConfigModule.forRoot({
@@ -23,7 +24,8 @@ import { SpectateService } from './items/spectate.service';
         POSTGRES_DB: Joi.string().required(),
         PORT: Joi.number(),
       })
-    })
+    }),
+    DatabaseModule,
   ],                                    
   controllers: [AppController, ItemsController, SpectateController],
   providers: [AppService, ItemsService, SpectateService],

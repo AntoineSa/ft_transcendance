@@ -1,4 +1,14 @@
+version: "3"
+
 services:
+
+  frontend:
+    container_name: frontend
+    build: frontend/
+    image: frontend
+    restart: always
+    ports:
+    - "3000:3000"
 
   backend:
     container_name: backend
@@ -18,8 +28,8 @@ services:
     - /data/postgres:/data/postgres
     env_file:
     - database/docker.env
-    networks:
-    - postgres
+#    networks:
+#    - postgres
 
 #	pgadmin:
 #		links:
@@ -27,3 +37,6 @@ services:
 #		container_name: pgadmin
 #		image
 
+#networks:
+#  postgres:
+#    driver: bridge
