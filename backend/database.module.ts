@@ -11,9 +11,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         type: 'postgres',
         host: configService.get('POSTGRES_HOST'),
         port: configService.get('POSTGRES_PORT'),
-        username: configService.get('POSTGRES_HOST'),
-        password: configService.get('POSTGRES_HOST'),
-        database: configService.get('POSTGRES_HOST'),
+        username: configService.get('POSTGRES_USER'),
+        password: configService.get('POSTGRES_PASSWORD'),
+        database: configService.get('POSTGRES_DB'),
         entities: [
           __dirname + '/../**/*.entity.ts',
         ],
