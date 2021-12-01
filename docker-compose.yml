@@ -22,20 +22,30 @@ services:
     container_name: postgres
     image: postgres:latest
     restart: always
-    ports:
-    - "5432:5432"
     volumes:
     - /data/postgres:/data/postgres
     env_file:
     - database/docker.env
-#    networks:
-#    - postgres
 
-#	pgadmin:
-#		links:
-#		- postgres:postgres
-#		container_name: pgadmin
-#		image
+  adminer:
+    container_name: adminer
+    image: adminer:latest
+    restart: always
+    links: 
+    - postgres:db
+    ports:
+    - "8080:8080"
+
+
+#  pgadmin:
+#    container_name: pgadmin
+#    image: dpage/pgadmin4:latest
+#    env_file:
+#    - database/docker.env
+#    ports:
+#    - "8080:80"
+#    volumes:
+#    - /data/pgadmin:/root/.pgadmin
 
 #networks:
 #  postgres:
