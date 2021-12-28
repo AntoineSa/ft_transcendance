@@ -9,15 +9,15 @@ COPY	./package.json ./
 RUN		npm install -G
 COPY	./main.ts src/
 COPY	./app.module.ts src/
-COPY	./items.controller.ts src/items/
-COPY	./items.service.ts src/items/
-COPY	./items.interface.ts src/items/
-COPY	./spectate.controller.ts src/items/
-COPY	./spectate.service.ts src/items/
-COPY	./spectate.interface.ts src/items/
-COPY	./user.interface.ts src/items/
-COPY	./create-item.dto.ts src/items/
-COPY	./database.module.ts src/items/
+COPY	./spectate/spectate.controller.ts src/spectate/
+COPY	./spectate/spectate.service.ts src/spectate/
+COPY	./spectate/spectate.entity.ts src/spectate/
+COPY	./spectate/spectate.module.ts src/spectate/
+COPY	./spectate/create-game.dto.ts src/spectate/
+#COPY	./spectate/spectate.interface.ts src/spectate/
+#COPY	./user/user.interface.ts src/user/
+COPY	./user/user.entity.ts src/user/
+COPY	./database.module.ts src/
 COPY	./validation.pipe.ts src/common/
 COPY	./admin.guard.ts src/common/
 COPY	./backend.env .env

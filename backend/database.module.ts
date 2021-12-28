@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         password: configService.get('POSTGRES_PASSWORD'),
         database: configService.get('POSTGRES_DB'),
         entities: [
-          __dirname + '/../**/*.entity.ts',
+          join(__dirname, '**', '*.entity.{ts,js}'),//app-project to input dynamically
+//          '/app-project/src/**/*.entity{.ts,.js}',//app-project to input dynamically
         ],
         synchronize: true,
       })

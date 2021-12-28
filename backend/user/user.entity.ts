@@ -1,12 +1,12 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-class User {
+export class User {
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   public id: number;
 
-  @Column()
+  @Column({ length: 20 })
   public username: string;
 
   @Column()
@@ -21,15 +21,13 @@ class User {
   @Column()
   public url: string;
 
-  @Column()
-  public game_history: Game[];
+//  @Column()
+//  public game_history: Game[];
 
-  @Column()
+  @Column({ default: 0 })
   public win_number: number;
 
   @Column()
   public lose_number: number;
 
 }
-
-export default User;

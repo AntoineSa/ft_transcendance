@@ -1,4 +1,4 @@
-import { Game } from './spectate.interface';
+import { Game } from '../spectate/spectate.entity';
 
 export class User {
 
