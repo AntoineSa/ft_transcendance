@@ -1,4 +1,4 @@
-import { Get, Post, Body, Controller } from '@nestjs/common';
+import { Get, Post, Body, Controller, ValidationPipe, UsePipes } from '@nestjs/common';
 import { SpectateService } from './spectate.service';
 import { CreateGameDto } from './create-game.dto'
 import { Game } from './spectate.entity';
@@ -14,7 +14,8 @@ export class SpectateController {
   }
 
   @Post()
-  async create(@Body() createGameDto: CreateGameDto) {
+  @UsePipes(new ValidationPipe({ transform: true }))
+  async create(@Body() createGameDto: CreateGameDto): Promise<Game> {
     return this.spectateService.createGame(createGameDto);
   }
 }

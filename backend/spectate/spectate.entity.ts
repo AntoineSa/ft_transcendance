@@ -1,32 +1,31 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, CreateDateColumn } from 'typeorm';
 import { User } from '../user/user.entity';
 
 @Entity()
 export class Game {
 
   @PrimaryGeneratedColumn('uuid')
-  public id: number;
+  public id: string;
 
   @OneToOne(type => User)
   @JoinColumn()
   public user1: User;
 
-  @Column({ type: 'smallint' })
+  @Column({ type: 'smallint', default: 0 })
   public user1_score: number;
 
   @OneToOne(type => User)
   @JoinColumn()
   public user2: User;
 
-  @Column({ type: 'smallint' })
+  @Column({ type: 'smallint', default: 0 })
   public user2_score: number;
 
-//  @Column({ type: 'timestampz', default: ()=> 'CURRENT_TIMESTAMP' })
-  @Column()
+  @CreateDateColumn()
   public started: Date;
 
-//  @Column()
-//  public ended: Date;
+  @Column({ nullable: true })
+  public ended: Date;
 
   @OneToOne(type => User)
   @JoinColumn()
