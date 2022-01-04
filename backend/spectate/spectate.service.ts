@@ -2,6 +2,7 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Game } from './spectate.entity';
+import { UpdateGameDto } from './update-game.dto';
  
 @Injectable()
 export class SpectateService {
@@ -26,9 +27,19 @@ export class SpectateService {
     await this.spectateRepository.delete(id);
   }
 
-  async createGame(game: Game) {
+  async createGame(game: Game): Promise<Game> {
     const newGame = await this.spectateRepository.create(game);
     this.spectateRepository.save(newGame);
     return newGame;
+  }
+
+  async updateGame(id: number, game: UpdateGameDto): Promise<Game> {
+    await this.spectateRepository.update(id, game);
+    const updatedGame = await this.spectateRepository.findOne(id);
+    if (updatedGame) {
+      return updatedGame;
+    }
+    throw new HttpException('Game not found', HttpStatus.NOT_FOUND);
+    return game;
   }
 }

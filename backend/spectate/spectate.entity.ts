@@ -31,7 +31,7 @@ export class Game {
   @JoinColumn()
   public winner: User;
 
-  @Column()
-  public url: string;
+//  @Column({ nullable: true })
+//  public url: string;
 
 }

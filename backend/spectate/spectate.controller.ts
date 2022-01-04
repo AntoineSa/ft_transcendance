@@ -1,4 +1,4 @@
-import { Get, Post, Body, Controller, ValidationPipe, UsePipes } from '@nestjs/common';
+import { Get, Post, Body, Param, Controller, ValidationPipe, UsePipes } from '@nestjs/common';
 import { SpectateService } from './spectate.service';
 import { CreateGameDto } from './create-game.dto'
 import { Game } from './spectate.entity';
@@ -11,6 +11,14 @@ export class SpectateController {
   @Get()
   async findAll(): Promise<Game[]> {
     return this.spectateService.findAllGames();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string): Promise<Game> {
+	if (!id) {
+    	return this.spectateService.findAllGames()[0];
+    }
+    return this.spectateService.findGameById(Number(id));
   }
 
   @Post()
