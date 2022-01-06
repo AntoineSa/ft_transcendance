@@ -14,6 +14,7 @@ COPY	./spectate/spectate.service.ts src/spectate/
 COPY	./spectate/spectate.entity.ts src/spectate/
 COPY	./spectate/spectate.module.ts src/spectate/
 COPY	./spectate/create-game.dto.ts src/spectate/
+COPY	./spectate/update-game.dto.ts src/spectate/
 #COPY	./spectate/spectate.interface.ts src/spectate/
 #COPY	./user/user.interface.ts src/user/
 COPY	./user/user.entity.ts src/user/

@@ -15,9 +15,6 @@ export class SpectateController {
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Game> {
-	if (!id) {
-    	return this.spectateService.findAllGames()[0];
-    }
     return this.spectateService.findGameById(Number(id));
   }
 
