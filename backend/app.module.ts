@@ -3,13 +3,14 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-//import { ProfileController } from './items/profile.controller';
-//import { ProfileService } from './items/profile.service';
+import { UserModule } from './user/user.module';
+//import { UserController } from './user/user.controller';
+//import { UserService } from './items/profile.service';
 //import { ChatController } from './items/chat.controller';
 //import { ChatService } from './items/chat.service';
-import { SpectateController } from './spectate/spectate.controller';
+//import { SpectateController } from './spectate/spectate.controller';
 import { SpectateModule } from './spectate/spectate.module';
-import { SpectateService } from './spectate/spectate.service';
+//import { SpectateService } from './spectate/spectate.service';
 import { DatabaseModule } from './database.module';
 
 @Module({     
@@ -26,6 +27,7 @@ import { DatabaseModule } from './database.module';
     }),
     DatabaseModule,
     SpectateModule,
+    UserModule,
   ],                                    
   controllers: [AppController],
   providers: [AppService],

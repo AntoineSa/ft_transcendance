@@ -10,24 +10,18 @@ export class User {
   public username: string;
 
   @Column()
-  private password: string;
+  password: string;
 
-  @Column()
-  private tfa: boolean;
+  @Column({ default: false })
+  tfa: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   public avatar: string;//url?
-
-  @Column()
-  public url: string;
-
-//  @Column()
-//  public game_history: Game[];
 
   @Column({ default: 0 })
   public win_number: number;
 
-  @Column()
+  @Column({ default: 0 })
   public lose_number: number;
 
 }
