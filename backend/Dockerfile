@@ -9,6 +9,7 @@ COPY	./package.json ./
 RUN		npm install -G
 COPY	./main.ts src/
 COPY	./app.module.ts src/
+COPY	./base.entity.ts src/
 COPY	./spectate/spectate.controller.ts src/spectate/
 COPY	./spectate/spectate.service.ts src/spectate/
 COPY	./spectate/spectate.entity.ts src/spectate/

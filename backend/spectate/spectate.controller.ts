@@ -1,6 +1,7 @@
 import { Get, Post, Body, Param, Controller, ValidationPipe, UsePipes } from '@nestjs/common';
 import { SpectateService } from './spectate.service';
 import { CreateGameDto } from './create-game.dto'
+import { UpdateGameDto } from './update-game.dto'
 import { Game } from './spectate.entity';
 
 
@@ -14,14 +15,21 @@ export class SpectateController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Game> {
-    return this.spectateService.findGameById(Number(id));
+  async findOne(@Param('id') id: Game["id"]): Promise<Game> {
+    return this.spectateService.findGameById(id);
   }
 
   @Post()
   @UsePipes(new ValidationPipe({ transform: true }))
   async create(@Body() createGameDto: CreateGameDto): Promise<Game> {
     return this.spectateService.createGame(createGameDto);
+  }
+
+  @Post(':id')
+  @UsePipes(new ValidationPipe({ transform: true }))
+  async update(@Param('id') id: string, @Body() updateGameDto: UpdateGameDto): Promise<Game> {
+    console.log(id);
+    return this.spectateService.updateGame(id, updateGameDto);
   }
 }
 

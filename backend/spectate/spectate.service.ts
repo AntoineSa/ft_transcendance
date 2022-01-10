@@ -15,7 +15,7 @@ export class SpectateService {
     return this.spectateRepository.find();
   }
 
-  findGameById(id: number): Promise<Game> {
+  findGameById(id: string): Promise<Game> {
     const game = this.spectateRepository.findOne(id);
     if (game) {
       return game;
@@ -23,7 +23,7 @@ export class SpectateService {
     throw new HttpException('Game not found', HttpStatus.NOT_FOUND);
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: string): Promise<void> {
     await this.spectateRepository.delete(id);
   }
 
@@ -33,7 +33,7 @@ export class SpectateService {
     return newGame;
   }
 
-  async updateGame(id: number, game: UpdateGameDto): Promise<Game> {
+  async updateGame(id: string, game: UpdateGameDto): Promise<Game> {
     await this.spectateRepository.update(id, game);
     const updatedGame = await this.spectateRepository.findOne(id);
     if (updatedGame) {
