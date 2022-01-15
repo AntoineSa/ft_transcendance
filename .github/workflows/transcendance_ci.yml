@@ -14,16 +14,17 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v2
 
-    - name: docker-compose build
-      run : docker-compose build
+    - name: build frontend
+      run : docker-compose build frontend
+
+    - name: build db
+      run : docker-compose build postgres adminer
+
+    - name: build backend
+      run : docker-compose build backend
       
     - name: docker-compose up
       run: docker-compose up
