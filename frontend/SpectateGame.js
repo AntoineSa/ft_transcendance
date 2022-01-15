@@ -31,17 +31,22 @@ class Spectate extends Component {
   }
 
   OngoingGameList() {
-    return this.state.gameList.map((value, rank) => {
-      return (
-        <li key={value.id}>
-          Game number {rank}
-        </li>
-      );
-    });
+    return (
+      <ul>
+        {this.state.gameList.map((value, rank) => {
+        return (
+          <li key={value.id}>
+            Game number {rank}
+          </li>
+        );
+      })}
+      </ul>
+    );
   }
 
   render() {
     if (this.state.error) {
+      console.log(this.state.gameList.length);
       return (
         <div className="getGamesFailure">
           <h2>An Error Has Occured</h2>

@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Route, Routes, NavLink } from "react-router-dom";
 import Game from "./Game";
-import Spectate from "./Spectate";
-import Profile from "./Profile";
+import SpectateSalon from "./SpectateSalon";
+import SpectateGame from "./SpectateGame";
+import UserIndex from "./UserIndex";
+import UserProfile from "./UserProfile";
+import OwnUserProfile from "./OwnUserProfile";
 import Chat from "./Chat";
 
 class Navbar extends Component {
@@ -19,8 +22,8 @@ class Navbar extends Component {
           <li key='spectate'>
             <NavLink to="/spectate">Spectate</NavLink>
           </li>
-          <li key='profile'>
-            <NavLink to="/profile">Profile</NavLink>
+          <li key='user'>
+            <NavLink to="/user">Users</NavLink>
           </li>
           <li key='chat'>
             <NavLink to="/chat">Chat</NavLink>
@@ -51,8 +54,12 @@ class App extends Component {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/game" element={<Game />} />
-              <Route path="/spectate" element={<Spectate />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/spectate" element={<SpectateSalon />} />
+                <Route path =":id" element={<SpectateGame />} />
+              <Route path="/user" element={<UserIndex />} />
+                <Route path ="/" element={<UserIndex />} />
+                <Route path =":id" element={<UserProfile />} />
+                <Route path="/me" element={<OwnUserProfile />} />
               <Route path="/chat" element={<Chat />} />
             </Routes>
             <h3>Sould have printed something</h3>
