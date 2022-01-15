@@ -34,12 +34,15 @@ export class SpectateService {
   }
 
   async updateGame(id: string, game: UpdateGameDto): Promise<Game> {
+    const regex = new RegExp(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+    if (!regex.test(id)) {
+      throw new HttpException('Invalid id format', HttpStatus.NOT_FOUND);
+    }
     await this.spectateRepository.update(id, game);
     const updatedGame = await this.spectateRepository.findOne(id);
     if (updatedGame) {
       return updatedGame;
     }
     throw new HttpException('Game not found', HttpStatus.NOT_FOUND);
-    return game;
   }
 }

@@ -1,32 +1,23 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsInt, IsUUID, IsDate } from 'class-validator';
+import { IsString, IsNotEmpty, IsBoolean, IsOptional } from 'class-validator';
 import { User } from './user.entity';
 
 export class CreateUserDto {
 
-  readonly id: User["id"];
-
-  readonly created_at: Date;
-
-  readonly updated_at: Date;
-
-  readonly version: number;
-
   @ApiProperty({ required: true }) 
   @IsString()
+  @IsNotEmpty()
   readonly username: string;
 
   @IsString()
+  @IsNotEmpty()
   readonly password: string;
 
+  @IsOptional()
+  @IsBoolean()
   readonly tfa: boolean;
 
-//  @IsInt()
+//  @IsString()
   readonly avatar: string;
-
-//  @IsDate()
-  readonly win_number: number;
-
-  readonly lose_number: number;
 
 }

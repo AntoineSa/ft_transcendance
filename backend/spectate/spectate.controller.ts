@@ -26,9 +26,8 @@ export class SpectateController {
   }
 
   @Post(':id')
-  @UsePipes(new ValidationPipe({ transform: true }))
+  @UsePipes(new ValidationPipe({ transform: true, skipMissingProperties: true, enableDebugMessages: true }))
   async update(@Param('id') id: string, @Body() updateGameDto: UpdateGameDto): Promise<Game> {
-    console.log(id);
     return this.spectateService.updateGame(id, updateGameDto);
   }
 }

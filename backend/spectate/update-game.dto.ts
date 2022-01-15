@@ -1,36 +1,32 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsInt, IsUUID, IsDate } from 'class-validator';
-import { Game } from './spectate.entity';
+import { IsString, IsInt, IsUUID, IsDate, IsOptional } from 'class-validator';
 import { User } from '../user/user.entity';
 
 export class UpdateGameDto {
 
-//  @IsUUID()
-  readonly id: Game["id"];
-
-  created_at: Date;
-
-  updated_at: Date;
-
-  version: number;
-
-//  @IsUUID()
+  @IsOptional()
+  @IsUUID()
   readonly user1: User["id"];
 
-//  @IsInt()
+  @IsOptional()
+  @IsInt()
   readonly user1_score: number;
 
-//  @IsUUID()
+  @IsOptional()
+  @IsUUID()
   readonly user2: User["id"];
 
-//  @IsInt()
+  @IsOptional()
+  @IsInt()
   readonly user2_score: number;
 
-//  @IsDate()
+  @IsOptional()
+  @IsDate()
   readonly ended: Date;
 
-  winner: string;
-
-  url: string;
+//  @Allow()
+  @IsOptional()
+  @IsUUID()
+  readonly winner: User["id"];
 
 }
