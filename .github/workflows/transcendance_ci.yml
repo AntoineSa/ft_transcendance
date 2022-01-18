@@ -20,19 +20,14 @@ jobs:
     - name: build frontend
       run : docker-compose build frontend
 
-    - name: build db
-      run : docker-compose build postgres adminer
-
     - name: build backend
       run : docker-compose build backend
       
     - name: docker-compose up
-      run: docker-compose up &
+      run: docker-compose up frontend postgres backend&
 
-    - name: Use Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: v17.2.0
-        cache: 'npm'
+    - name: run tests
+      run: docker-compose up --build jest
 
-    - run: npm test
+    - name: docker-compose down
+      run: docker-compose down
