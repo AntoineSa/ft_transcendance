@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsBoolean, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsBoolean, IsOptional, Length, IsAlphanumeric } from 'class-validator';
 import { User } from './user.entity';
 
 export class CreateUserDto {
@@ -7,10 +7,14 @@ export class CreateUserDto {
   @ApiProperty({ required: true }) 
   @IsString()
   @IsNotEmpty()
+  @IsAscii()
+  @Length(1, 20)
   readonly username: string;
 
   @IsString()
   @IsNotEmpty()
+  @IsAscii()
+  @Length(1, 32)// TODO define values
   readonly password: string;
 
   @IsOptional()
