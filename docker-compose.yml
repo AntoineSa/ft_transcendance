@@ -36,10 +36,15 @@ services:
     ports:
     - "8080:8080"
 
-  jest:
-    container_name: jest
-    build: jest/
-    image: jest
+#  jest:
+#    container_name: jest
+#    build: jest/
+#    image: jest
+
+  newman:
+    container_name: newman
+    build: newman/
+    image: newman
 
 #  pgadmin:
 #    container_name: pgadmin
