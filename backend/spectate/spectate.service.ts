@@ -2,6 +2,7 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Game } from './spectate.entity';
+import { CreateGameDto } from './create-game.dto';
 import { UpdateGameDto } from './update-game.dto';
  
 @Injectable()
@@ -27,7 +28,7 @@ export class SpectateService {
     await this.spectateRepository.delete(id);
   }
 
-  async createGame(game: Game): Promise<Game> {
+  async createGame(game: CreateGameDto): Promise<Game> {
     const newGame = await this.spectateRepository.create(game);
     this.spectateRepository.save(newGame);
     return newGame;
