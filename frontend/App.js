@@ -5,7 +5,6 @@ import SpectateSalon from "./SpectateSalon";
 import SpectateGame from "./SpectateGame";
 import UserIndex from "./UserIndex";
 import UserProfile from "./UserProfile";
-import OwnUserProfile from "./OwnUserProfile";
 import Chat from "./Chat";
 
 class Navbar extends Component {
@@ -57,9 +56,7 @@ class App extends Component {
               <Route path="/spectate" element={<SpectateSalon />} />
               <Route path ="/spectate/:id" element={<SpectateGame />} />
               <Route path="/user" element={<UserIndex />} />
-                <Route path ="/" element={<UserIndex />} />
-                <Route path =":id" element={<UserProfile />} />
-                <Route path="/me" element={<OwnUserProfile />} />
+              <Route path="/user/:id" element={<UserProfile />} />
               <Route path="/chat" element={<Chat />} />
             </Routes>
             <h3>Sould have printed something</h3>

@@ -13,7 +13,6 @@ COPY	SpectateSalon.js src/
 COPY	SpectateGame.js src/
 COPY	UserIndex.js src/
 COPY	UserProfile.js src/
-COPY	OwnUserProfile.js src/
 COPY	Chat.js src/
 COPY	LoginPage.js src/
 

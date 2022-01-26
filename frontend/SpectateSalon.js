@@ -35,9 +35,9 @@ class SpectateSalon extends Component {
         return (
           <li key={value.id}>
             <h4>Game number {rank}</h4>
-            <Link to="/user/:id">{value.user2}</Link>
+            <Link to={"/user/" + value.user1}>{value.user1}</Link>
             <h4>score : {value.user1_score}</h4>
-            <Link to="/user/:id">{value.user2}</Link>
+            <Link to={"/user/" + value.user2}>{value.user2}</Link>
             <h4>score : {value.user2_score}</h4>
             <Link to={"/spectate/" + value.id}>Game number {rank}</Link>
           </li>
