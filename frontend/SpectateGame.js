@@ -1,47 +1,41 @@
 import React, { Component } from "react";
-//import { NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 //import fetch from "node-fetch";
 
-//          <NavLink to={value.link}>Game number {rank}</NavLink>
-class Spectate extends Component {
+class SpectateComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: null,
       error: false,
-      gameList: [],
+      user1: null,
+      user1_score: 0,
+      user2: null,
+      user2_score: 0
     };
   }
 
   componentDidMount() {
-    this.GameList();
-    console.log(this.state.gameList.length);
+    this.Spectate();
   }
 
-  GameList() {
-    const link = 'http://localhost:5000/spectate';//TODO change for true/dynamic link
+  Spectate() {
+    this.setState({ id : this.props.id });
+    const link = 'http://localhost:5000/spectate/' + this.props.id;//TODO change for true/dynamic link
     fetch(link, {
       method: 'GET',
       mode: 'cors',
      })
      .then(result => result.json())
      .then(
-       results => this.setState({ gameList: results }),
+       results => this.setState({
+         user1: results.user1,
+         user1_score: results.user1_score,
+         user2: results.user2,
+         user2_score: results.user2_score,
+       }),
        error => this.setState({ error: true })
      );
-  }
-
-  OngoingGameList() {
-    return (
-      <ul>
-        {this.state.gameList.map((value, rank) => {
-        return (
-          <li key={value.id}>
-            Game number {rank}
-          </li>
-        );
-      })}
-      </ul>
-    );
   }
 
   render() {
@@ -54,11 +48,24 @@ class Spectate extends Component {
       );
     }
     return (
-      <div className="ongoingGameList">
-        {this.state.gameList.length === 0 ? <h2>There is no ongoing game to watch</h2> : this.OngoingGameList()}
+      <div className="spectateGame">
+        <h4>player 1</h4>
+        <h5>{this.state.user1}</h5>
+        <h5>score : {this.state.user1_score}</h5>
+        <h4>player 2</h4>
+        <h5>{this.state.user2}</h5>
+        <h5>score : {this.state.user2_score}</h5>
       </div>
     );
   }
 }
 
-export default Spectate;
+
+export default function SpectateGame() {
+  const id = useParams().id;
+  return (
+      <SpectateComponent id={id} />
+  );
+}
+
+//export default Spectate;

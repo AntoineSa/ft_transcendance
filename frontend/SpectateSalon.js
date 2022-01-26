@@ -16,7 +16,7 @@ class SpectateSalon extends Component {
   }
 
   GameList() {
-    const link = 'http://localhost:5000/spectate';//TODO change for true/dynamic link
+    const link = 'http://localhost:5000/spectate/';//TODO change for true/dynamic link
     fetch(link, {
       method: 'GET',
       mode: 'cors',
@@ -34,7 +34,12 @@ class SpectateSalon extends Component {
         {this.state.gameList.map((value, rank) => {
         return (
           <li key={value.id}>
-            <Link to="/spectate/:id">Game number {rank}</Link>
+            <h4>Game number {rank}</h4>
+            <Link to="/user/:id">{value.user2}</Link>
+            <h4>score : {value.user1_score}</h4>
+            <Link to="/user/:id">{value.user2}</Link>
+            <h4>score : {value.user2_score}</h4>
+            <Link to={"/spectate/" + value.id}>Game number {rank}</Link>
           </li>
         );
       })}

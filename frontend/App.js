@@ -55,7 +55,7 @@ class App extends Component {
               <Route path="/" element={<Home />} />
               <Route path="/game" element={<Game />} />
               <Route path="/spectate" element={<SpectateSalon />} />
-                <Route path =":id" element={<SpectateGame />} />
+              <Route path ="/spectate/:id" element={<SpectateGame />} />
               <Route path="/user" element={<UserIndex />} />
                 <Route path ="/" element={<UserIndex />} />
                 <Route path =":id" element={<UserProfile />} />
